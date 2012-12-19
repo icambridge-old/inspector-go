@@ -3,7 +3,6 @@ package controllers
 import (
 	"database/sql"
 	_ "code.google.com/p/go-mysql-driver/mysql"
-	"fmt"
 	"github.com/robfig/revel"
 )
 
@@ -21,7 +20,6 @@ func (p DbPlugin) OnAppStart() {
 }
 
 func (p DbPlugin) BeforeRequest(c *rev.Controller) {
-	fmt.Println("Hello")
 	var err error
 
 	dsn, found := rev.Config.String("mysql.dsn")

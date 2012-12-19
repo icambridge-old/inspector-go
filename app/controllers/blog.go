@@ -10,9 +10,32 @@ type Blog struct {
 }
 
 func (c Blog) Index() rev.Result {
-	random := "Test"
-	decid := "Second"
-	return c.Render(random, decid)
+
+	rows, err := c.Txn.Query("SELECT `title`, `description`,`slug`,`timestamp` FROM `posts` ORDER BY id DESC")
+	if err != nil {
+		panic(err)
+	}
+
+	posts := []map[string] string{}
+
+	var title string
+	var description string
+	var slug string
+	var post map[string] string
+	var date string
+
+	for rows.Next() {
+ 		err = rows.Scan( &title, &description, &slug, &date)
+		post = map[string] string {
+			"Title": title,
+			"Description": description,
+			"Slug": slug,
+			"Date": date,
+		}	
+		posts = append(posts, post)
+	}
+
+	return c.Render(posts)
 }
 
 func (c Blog) View() rev.Result {

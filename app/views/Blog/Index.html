@@ -1,6 +1,19 @@
 {{set . "title" "Blog"}}
 {{template "header.html" .}}
 
-<h1>Blog d</h1>
+<div class="title">
+	<h2>Latest Posts</h2>
+</div>
+	
+
+	{{range $key, $post := .posts}}
+		<h3>{{$post.Title}}</h3>
+		<h5>Posted at {{$post.Date}}</h5>
+		<p>
+			{{$post.Description}}
+		</p>
+		<a href="/blog/{{$post.Slug}}">Read More</a>		
+		<br />
+	{{end}}
 
 {{template "footer.html" .}}

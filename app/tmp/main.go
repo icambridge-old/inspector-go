@@ -61,9 +61,8 @@ func main() {
 				Args: []*rev.MethodArg{ 
 				},
 				RenderArgNames: map[int][]string{ 
-					15: []string{ 
-						"random",
-						"decid",
+					38: []string{ 
+						"posts",
 					},
 				},
 			},
@@ -72,13 +71,13 @@ func main() {
 				Args: []*rev.MethodArg{ 
 				},
 				RenderArgNames: map[int][]string{ 
-					25: []string{ 
+					48: []string{ 
 						"permalink",
 					},
-					32: []string{ 
+					55: []string{ 
 						"permalink",
 					},
-					42: []string{ 
+					65: []string{ 
 						"permalink",
 						"title",
 						"content",
